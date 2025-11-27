@@ -23,9 +23,9 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 - **Release history**:    
       - 01.12.2026: data sample (example) 
       - 10.12.2025: partial training data release [v1.0](link to git release)    
-      - 19.01.2026: full training and dev data release [v2.0](link to git releas)    
+      - 19.01.2026: full training and dev data release [v2.0](link to git release)    
       - xx.xx.2026: masked test data release    
-      - xx.xx.2022: unmasked test data release
+      - xx.xx.2026: unmasked test data release
 
 ## HIPE-2026 data
 
