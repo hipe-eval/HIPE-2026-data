@@ -60,11 +60,11 @@ The preparation process involved roughly the following steps:
     data
     └── vx.x
          ├── lg1
-         │     ├── HIPE-2022-vx.x-dataset1-train-lg1.jsonl
-         │     ├── HIPE-2022-vx.x-dataset1-dev-lg1.jsonl
+         │     ├── HIPE-2026-vx.x-impresso-train-lg1.jsonl
+         │     ├── HIPE-2026-vx.x-impresso-dev-lg1.jsonl
          └── lg2
-         │     ├── HIPE-2022-vx.x-dataset2-train-lg2.jsonl
-         │     ├── HIPE-2022-vx.x-dataset2-dev-lg2.jsonl
+         │     ├── HIPE-2026-vx.x-impresso-train-lg2.jsonl
+         │     ├── HIPE-2026-vx.x-impresso-dev-lg2.jsonl
          ├── ...
     └── vx.x
         ├── lg1 ...
