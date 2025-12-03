@@ -91,7 +91,7 @@
           "at": {
             "type": ["string", "null"],
             "enum": ["TRUE", "FALSE", "PROBABLE", null],
-            "description": "Indicates whether the text provides evidence that the person was at the specified location at any point in time. Values left as null will be interpreted as FALSE during evaluation."
+            "description": "Indicates whether the text provides evidence that the person was at the specified location at any point in time before publication. Values left as null will be interpreted as FALSE during evaluation."
           },
           "at_explanation": {
             "type": ["string", "null"],
