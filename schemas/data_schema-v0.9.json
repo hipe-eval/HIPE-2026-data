@@ -5,11 +5,11 @@
   "properties": {
     "document_id": {
       "type": "string",
-      "description": "Unique identifier for the document, usually including media code, date, and page or broadcast info, e.g. 'NZZ-1808-05-24-a-p0004'"
+      "description": "Unique identifier for the document, typically combining media code, date, and page or broadcast info, e.g. 'NZZ-1808-05-24-a-p0004'"
     },
     "source": {
       "type": "string",
-      "description": "Source file of the sample.'"
+      "description": "Name of the original source file from which the document was extracted such as HIPE-2020 file names."
     },
     "media": {
       "type": "object",
@@ -17,22 +17,18 @@
       "properties": {
         "publication_title": {
           "type": "string",
-          "description": "Name of the media source, e.g. 'Neue Zürcher Zeitung'"
+          "description": "Name of the media source, e.g., 'Neue Zürcher Zeitung'"
         },
         "time_period": {
           "type": "string",
-          "description": "Time period during which this media source was active, e.g. '1780-1950'"
+          "description": "Time period description during which this media source was active, e.g., '1780-1950'"
         },
         "source_type": {
           "type": "string",
-          "description": "Type of the media source, e.g. 'Newspaper', 'Radio Broadcast'..."
+          "description": "Type of the media source, e.g., 'Newspaper', 'Radio Broadcast'..."
         }
       },
-      "required": [
-        "publication_title",
-        "time_period",
-        "source_type"
-      ]
+      "required": ["publication_title", "time_period", "source_type"]
     },
     "date": {
       "oneOf": [
@@ -48,32 +44,29 @@
     },
     "language": {
       "type": "string",
-      "description": "Language code (ISO 639-1)"
+      "description": "Language code (ISO 639-1), e.g., 'de', 'fr', 'en'"
     },
     "text": {
       "type": "string",
-      "description": "OCR text of the document or transcript, including newlines"
+      "description": "OCR text of the document or radio transcript, including line breaks."
     },
     "sampled_pairs": {
       "type": "array",
-      "description": "Custom number of proximity sampled person–location pairs from the document.",
+      "description": "List of person–location pairs from the document, sampled based on textual proximity. Not more than 16 pairs per document.",
       "items": {
         "type": "object",
         "properties": {
           "pers_entity_id": {
             "type": "string",
-            "description": "The entity_id of the person entity in this pair"
+            "description": "Unique identifier for the person entity in this pair."
           },
           "pers_wikidata_QID": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "Wikidata QID for the person entity if available, or null if unknown"
+            "type": ["string", "null"],
+            "description": "Wikidata QID for the person entity if available, or null if unknown."
           },
           "pers_mentions_list": {
             "type": "array",
-            "description": "All unique mention strings referring to this person entity",
+            "description": "List of all distinct surface forms (mention strings) referring to this entity within the document.",
             "items": {
               "type": "string"
             },
@@ -81,61 +74,37 @@
           },
           "loc_entity_id": {
             "type": "string",
-            "description": "The entity_id of the location entity in this pair"
+            "description": "Unique identifier for the location entity in this pair."
           },
           "loc_wikidata_QID": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "Wikidata QID for the location entity if available, or null if unknown"
+            "type": ["string", "null"],
+            "description": "Wikidata QID for the location entity if available, or null if unknown."
           },
           "loc_mentions_list": {
             "type": "array",
-            "description": "All unique mention strings referring to this location entity",
+            "description": "List of all distinct surface forms (mention strings) referring to this entity within the document.",
             "items": {
               "type": "string"
             },
             "uniqueItems": true
           },
           "at": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "enum": [
-              "TRUE",
-              "FALSE",
-              "PROBABLE",
-              null
-            ],
-            "description": "Indicates whether the person was at the location judging from textual evidence. Any cells left as 'NULL' will be treated as 'FALSE' during evaluation."
+            "type": ["string", "null"],
+            "enum": ["TRUE", "FALSE", "PROBABLE", null],
+            "description": "Indicates whether the text provides evidence that the person was at the specified location at any point in time. Values left as null will be interpreted as FALSE during evaluation."
           },
           "at_explanation": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "Optional but useful explanation for the at judgment."
+            "type": ["string", "null"],
+            "description": "Optional concise explanation justifying the assigned label. Not used in scoring."
           },
           "isAt": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "enum": [
-              "TRUE",
-              "FALSE",
-              null
-            ],
-            "description": "Indicates whether there is evidence that the person was at the location within roughly two weeks before the article's publication. Any cells left as 'NULL' will be treated as 'FALSE' during evaluation."
+            "type": ["string", "null"],
+            "enum": ["TRUE", "FALSE", null],
+            "description": "Indicates whether the document supports the inference that the person was present at the specified location within approximately one month before its publication date. null values are interpreted as FALSE during evaluation."
           },
           "isAt_explanation": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "Optional but usefule explanation for the at/isAt judgment."
+            "type": ["string", "null"],
+            "description": "Optional concise explanation justifying the assigned label. Not used in scoring."
           }
         },
         "required": [
