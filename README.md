@@ -53,21 +53,26 @@ The preparation process involved roughly the following steps:
 **Directory structure and naming convention**
 
 - Training and development datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
-- Files are named according to this schema: `HIPE-2026-vx.x-impresso-<train|dev|test>-<lg1>.jsonl`.
+- Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|dev|test>-<lg1>.jsonl`.
 - Data directory is organised per HIPE release version and language:
 
   ```
   data
-  └── vx.x
-       ├── lg1
-       │     ├── HIPE-2026-vx.x-impresso-train-lg1.jsonl
-       │     ├── HIPE-2026-vx.x-impresso-dev-lg1.jsonl
-       └── lg2
-       │     ├── HIPE-2026-vx.x-impresso-train-lg2.jsonl
-       │     ├── HIPE-2026-vx.x-impresso-dev-lg2.jsonl
-       ├── ...
-  └── vx.x
-      ├── lg1 ...
+  └── newspapers
+      ├──  vx.x
+           ├── lg1
+           │     ├── HIPE-2026-vx.x-newspapers-train-lg1.jsonl
+           │     ├── HIPE-2026-vx.x-newspapers-dev-lg1.jsonl
+           └── lg2
+           │     ├── HIPE-2026-vx.x-newspapers-train-lg2.jsonl
+           │     ├── HIPE-2026-vx.x-newspapers-dev-lg2.jsonl
+           ├── ...
+      └── vx.x
+           ├── lg1 ...
+    └── literaryworks
+        ├──  vx.x
+               ├── lg1
+               │     ├── HIPE-2026-vx.x-literaryworks-test-lg1.jsonl
   ```
 
 **Versioning**
