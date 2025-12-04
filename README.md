@@ -14,7 +14,7 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 ## Key information
 
 - :computer: Visit the [**website**](https://hipe-eval.github.io/HIPE-2026/) for general information on the shared task and registration.
-- :notebook: Read the [**Participation Guidelines**](to-be-updated) for detailed information about the tasks, datasets and evaluation.
+- :notebook: Read the [**Participation Guidelines**](https://doi.org/10.5281/zenodo.17800136) for detailed information about the tasks, datasets and evaluation. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17800136.svg)](https://doi.org/10.5281/zenodo.17800136)
 - **License**: HIPE-2026 data is released under a [CC BY-NC-SA 4.0 License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg) [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - **Where to find the data**:
   - in the [data](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/) folder
