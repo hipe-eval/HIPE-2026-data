@@ -124,6 +124,26 @@ python scripts/check_jsonlschema.py \
     data/v0.9/*.jsonl
 ```
 
+### Submission Scorer
+
+Score the performance of a single submission file.
+
+```bash
+python scripts/file_scorer_evaluation.py \ 
+--gold_data_file GOLD_DATA_FILE_TO_EVALUATE_AGAINST.jsonl \
+--predictions_file YOUR_PREDICTION_FILE.jsonl
+```
+
+Score the performance of an entire submission folder.
+
+```bash
+python scripts/folder_scorer_evaluation.py \
+--gold_data_folder "data/newspapers/v0.9" # is also set as the default.
+--team_name TEAM_NAME \
+--submission-folder SUBMISSION_FOLDER_NAME
+```
+
+
 ## Acknowledgements
 
 The HIPE-2026 organising team expresses its sincere appreciation to the CLEF-2026 Lab Organising Committee for the overall coordination and support. HIPE-eval editions are organised within the framework of the [Impresso - Media Monitoring of the Past](https://impresso-project.ch/)￼ project, funded by the Swiss National Science Foundation under grant No. CRSII5_213585 and by the Luxembourg National Research Fund under grant No. 17498891.
