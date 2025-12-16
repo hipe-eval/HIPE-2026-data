@@ -183,7 +183,8 @@ def calculate_metrics(labels: dict) -> dict:
     """
     metrics = {}
 
-    for target in ["at", "isAt"]:
+    targets = ["at", "isAt"]
+    for target in targets:
         gold = labels[target]["gold"]
         pred = labels[target]["pred"]
 
@@ -198,6 +199,12 @@ def calculate_metrics(labels: dict) -> dict:
             "correct": correct,
             "total": total,
         }
+    
+    metrics["global"] = {
+        "macro_recall": sum(metrics[t]["macro_recall"] for t in targets) / len(targets),
+        "correct": sum(metrics[t]["correct"] for t in targets),
+        "total": sum(metrics[t]["total"] for t in targets),
+    }
 
     return metrics
 
