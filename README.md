@@ -143,6 +143,8 @@ python scripts/folder_scorer_evaluation.py \
 --submission_folder SUBMISSION_FOLDER_NAME
 ```
 
+Note: For the currently supported sample evaluations, the submission files should follow the naming {team_name}_{gold_file_stem}_run1.jsonl
+
 
 ## Acknowledgements
 
