@@ -194,12 +194,12 @@ def calculate_metrics(labels: dict) -> dict:
         macro_recall = recall_score(gold, pred, average="macro")
 
         metrics[target] = {
-            "accuracy": accuracy,
             "macro_recall": macro_recall,
+            "accuracy": accuracy,
             "correct": correct,
             "total": total,
         }
-    
+
     metrics["global"] = {
         "macro_recall": sum(metrics[t]["macro_recall"] for t in targets) / len(targets),
         "correct": sum(metrics[t]["correct"] for t in targets),
