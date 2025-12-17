@@ -142,11 +142,11 @@ def main():
         help="The folder path containing the gold data to evaluate against.",
     )
     parser.add_argument(
-        "team_name",
+        "--team_name",
         help="The unique team name for the submitting team (e.g., TEAM_A).",
     )
     parser.add_argument(
-        "submission_folder",
+        "--submission_folder",
         help="The folder path containing the submission files to evaluate",
     )
 

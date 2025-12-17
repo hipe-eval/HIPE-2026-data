@@ -140,7 +140,7 @@ Score the performance of an entire submission folder.
 python scripts/folder_scorer_evaluation.py \
 --gold_data_folder "data/newspapers/v0.9" # is also set as the default.
 --team_name TEAM_NAME \
---submission-folder SUBMISSION_FOLDER_NAME
+--submission_folder SUBMISSION_FOLDER_NAME
 ```
 
 
