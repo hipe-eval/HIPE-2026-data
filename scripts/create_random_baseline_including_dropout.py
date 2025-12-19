@@ -9,10 +9,10 @@ ISAT_VALUES = ["TRUE", "FALSE"]
 
 # Directory containing your JSONL files
 INPUT_DIR = "."  # Change if needed
-OUTPUT_SUFFIX = "-randomized_dropout.jsonl"
+OUTPUT_SUFFIX = "-randomized.jsonl"
 
 # Dropout rate for sample pairs
-PAIR_DROPOUT_RATE = 0.2  # 20% dropout
+PAIR_DROPOUT_RATE = 0.0  # 20% dropout
 
 
 def randomize_predictions(obj):
@@ -60,7 +60,7 @@ def process_files():
                 all_objects.append(obj)
 
         # Randomly select one document to delete (if there are multiple)
-        if len(all_objects) > 1:
+        if len(all_objects) > 1 and (PAIR_DROPOUT_RATE > 0):
             delete_index = random.randint(0, len(all_objects) - 1)
             print(f"Deleting document at index {delete_index} from {file_path}")
             all_objects.pop(delete_index)

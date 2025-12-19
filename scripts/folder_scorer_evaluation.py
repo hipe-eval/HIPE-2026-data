@@ -19,6 +19,7 @@ from evaluation_utils import (
 GOLD_FILENAMES_PREFIXES = [
     "HIPE-2026-*-impresso-sample-de",
     "HIPE-2026-*-impresso-sample-fr",
+    "HIPE-2026-*-impresso-sample-en",
 ]
 
 
@@ -138,7 +139,7 @@ def main():
     )
     parser.add_argument(
         "--gold_data_folder",
-        default="data/newspapers/v0.9",
+        default="data/newspapers/v1.0",
         help="The folder path containing the gold data to evaluate against.",
     )
     parser.add_argument(
