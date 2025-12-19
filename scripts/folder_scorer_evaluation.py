@@ -19,7 +19,7 @@ from evaluation_utils import (
 GOLD_FILENAMES_PREFIXES = [
     "HIPE-2026-*-impresso-sample-de",
     "HIPE-2026-*-impresso-sample-fr",
-    "HIPE-2026-*-impresso-sample-en"
+    "HIPE-2026-*-impresso-sample-en",
 ]
 
 
