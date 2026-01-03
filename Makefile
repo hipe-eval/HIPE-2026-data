@@ -2,7 +2,7 @@
 # HIPE-2026 JSONL Validation Makefile
 # -----------------------------
 
-VERSION = v0.9
+VERSION = v1.0
 SCHEMA = schemas/data_schema-$(VERSION).json
 VALIDATOR = scripts/check_jsonlschema.py
 DATA_DIR = data/$(VERSION)
