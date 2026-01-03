@@ -47,7 +47,7 @@ The preparation process involved roughly the following steps:
 
 **Format and data representation**
 
-- HIPE-2026 data follows this [JSON schema]().
+- HIPE-2026 data follows this [JSON schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
 - All documents from different primary datasets of HIPE-2022 are gathered in the same language-dependent JSON Line file.
 - Information on the source document and its metadata are in the `media` property.
 
@@ -102,7 +102,7 @@ To validate that your `.jsonl` files conform to the HIPE-2026 schema:
    make validate
    ```
 
-This will check all `.jsonl` files in `data/v0.9/` against the schema at `schemas/data_schema-v0.9.json`.
+This will check all `.jsonl` files in `data/v1.0/` against the schema at `hipe-2026-data.schema.json`.
 
 To clean up the virtual environment and cache files:
 
@@ -120,8 +120,8 @@ Alternatively, you can run the validator script directly:
 
 ```bash
 python scripts/check_jsonlschema.py \
-    --schemafile schemas/data_schema-v0.9.json \
-    data/v0.9/*.jsonl
+    --schemafile schemas/hipe-2026-data.schema.json \
+    data/v1.0/*.jsonl
 ```
 
 ### Submission Scorer
