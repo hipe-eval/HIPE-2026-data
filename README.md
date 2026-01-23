@@ -23,7 +23,7 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 - **Release history**:
   - 04.12.2026: [data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) + data [json schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
   - 19.12.2025: [extended data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) release v1.0 and [sandbox](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/sandbox) release (high quality automatic annotations)
-  - 19.01.2026: full training and dev data release v2.0
+  - 22.01.2026: full training release 
   - xx.xx.2026: masked test data release
   - xx.xx.2026: unmasked test data release
 
@@ -53,7 +53,7 @@ The preparation process involved roughly the following steps:
 
 **Directory structure and naming convention**
 
-- Training and development datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
+- Training and testing datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
 - Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|test>-<lg1>.jsonl`.
 - Data directory is organised per HIPE release version and language:
 
@@ -75,7 +75,7 @@ The preparation process involved roughly the following steps:
 
 ### Dataset statistics
 
-_To come soon: Link to notebook when available._
+In [this notebook](https://colab.research.google.com/drive/1Av87krWYI1QbQ-_q_UfrVBbKMtcInpJb#scrollTo=sNoDJI242duL) we load the training data and generate some dataset statistics.
 
 ### Data validation
 
