@@ -64,7 +64,7 @@ The preparation process involved roughly the following steps:
            ├── HIPE-2026-v<x.y>-newspapers-train-<language>.jsonl # e.g., <language> = "en"
            ├── ...
     └── literaryworks # here will appear the surprise test set
-        ├──  <dataset_version_number>
+        ├──  v<x.y>
            ├── HIPE-2026-v<x.y>-literaryworks-test-<language>.jsonl
   ```
 
