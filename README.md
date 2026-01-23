@@ -53,7 +53,7 @@ The preparation process involved roughly the following steps:
 
 **Directory structure and naming convention**
 
-- Training and development datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
+- Training and testing datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
 - Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|test>-<lg1>.jsonl`.
 - Data directory is organised per HIPE release version and language:
 
