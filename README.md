@@ -60,12 +60,12 @@ The preparation process involved roughly the following steps:
   ```
   data
   └── newspapers
-      ├──  <dataset_version_number> # e.g. "v1.0"
-           ├── HIPE-2026-vx.x-newspapers-train-<language>.jsonl # e.g., <language> = "en"
+      ├──  v<x.y> # e.g. "1.0"
+           ├── HIPE-2026-v<x.y>-newspapers-train-<language>.jsonl # e.g., <language> = "en"
            ├── ...
-    └── literaryworks
+    └── literaryworks # here will appear the surprise test set
         ├──  <dataset_version_number>
-           ├── HIPE-2026-vx.x-literaryworks-test-<language>.jsonl
+           ├── HIPE-2026-v<x.y>-literaryworks-test-<language>.jsonl
   ```
 
 **Versioning**
