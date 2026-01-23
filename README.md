@@ -54,26 +54,18 @@ The preparation process involved roughly the following steps:
 **Directory structure and naming convention**
 
 - Training and development datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
-- Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|dev|test>-<lg1>.jsonl`.
+- Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|test>-<lg1>.jsonl`.
 - Data directory is organised per HIPE release version and language:
 
   ```
   data
   └── newspapers
-      ├──  vx.x
-           ├── lg1
-           │     ├── HIPE-2026-vx.x-newspapers-train-lg1.jsonl
-           │     ├── HIPE-2026-vx.x-newspapers-dev-lg1.jsonl
-           └── lg2
-           │     ├── HIPE-2026-vx.x-newspapers-train-lg2.jsonl
-           │     ├── HIPE-2026-vx.x-newspapers-dev-lg2.jsonl
+      ├──  <dataset_version_number> # e.g. "v1.0"
+           ├── HIPE-2026-vx.x-newspapers-train-<language>.jsonl # e.g., <language> = "en"
            ├── ...
-      └── vx.x
-           ├── lg1 ...
     └── literaryworks
-        ├──  vx.x
-               ├── lg1
-               │     ├── HIPE-2026-vx.x-literaryworks-test-lg1.jsonl
+        ├──  <dataset_version_number>
+           ├── HIPE-2026-vx.x-literaryworks-test-<language>.jsonl
   ```
 
 **Versioning**
@@ -138,7 +130,7 @@ Score the performance of an entire submission folder.
 
 ```bash
 python scripts/folder_scorer_evaluation.py \
---gold_data_folder "data/newspapers/v0.9" # is also set as the default.
+--gold_data_folder "data/newspapers/v1.0" # is also set as the default.
 --team_name TEAM_NAME \
 --submission_folder SUBMISSION_FOLDER_NAME
 ```
