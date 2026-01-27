@@ -81,7 +81,7 @@ In [this notebook](https://colab.research.google.com/drive/1Av87krWYI1QbQ-_q_Ufr
 
 To validate that your `.jsonl` files conform to the HIPE-2026 schema:
 
-1. **Create a virtual environment and install dependencies**:
+1. Create a virtual environment and install dependencies:
 
    ```bash
    python3 -m venv venv
@@ -89,7 +89,7 @@ To validate that your `.jsonl` files conform to the HIPE-2026 schema:
    pip install -r requirements.txt
    ```
 
-You can run the validator script directly:
+2. Run the validator script directly:
 
 ```bash
 python scripts/check_jsonlschema.py \
