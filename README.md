@@ -42,7 +42,7 @@ The preparation process involved roughly the following steps:
 1.  Representation transformation: convert IOB-encoded annotations into structured JSON (intermediate JSON schema).
 2.  Data cleaning & filtering: merge NIL entities and remove overly long documents.
 3.  Extraction of candidate person–location pairs: identify potential pairs within each document and filter.
-4.  Annotation — pre-annotate with an LLM, then manually review and correct collaboratively.
+4.  Annotation — pre-annotate with an ensemble of LLM, then manually review and correct collaboratively.
 5.  Final dataset creation: assemble dataset splits and package for release (final JSON schema).
 
 **Format and data representation**
