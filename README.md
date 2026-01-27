@@ -8,7 +8,7 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 
 - [Key information](#key-information)  
 - [Data](#hipe-2026-data): Information about data, including link to dataset statistics notebook.  
-- [HIPE-2026 Evaluation](#hipe-2026-evaluation) A simple example of prediction and evaluation.
+- [Evaluation](#prediction-and-evaluation-example) A simple example of prediction and evaluation.
 - [Acknowledgements](#acknowledgements)  
 - [References](#references)
 
