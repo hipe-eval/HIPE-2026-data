@@ -4,12 +4,13 @@
 
 Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020) and [HIPE-2022](https://impresso.github.io/CLEF-HIPE-2022), which focused on entity recognition and linking, HIPE-2026 aims to support answering the question **_Who was where, when?_** and to deepen our understanding of how people and places were connected in historical media. This will enable the reconstruction of life trajectories, the tracing of mobility patterns, and the identification of actors within local contexts.
 
-[Key information](#key-information)  
-[Data](#hipe-2026-data)  
-[HIPE-2026 Data Releases](#hipe-2026-releases)  
-[HIPE-2026 Evaluation](#hipe-2026-evaluation)  
-[Acknowledgements](#acknowledgements)  
-[References](#references)
+**Table of Contents**
+
+- [Key information](#key-information)  
+- [Data](#hipe-2026-data): Information about data, including link to dataset statistics notebook.  
+- [HIPE-2026 Evaluation](#hipe-2026-evaluation) A simple example of prediction and evaluation.
+- [Acknowledgements](#acknowledgements)  
+- [References](#references)
 
 ## Key information
 
@@ -18,7 +19,6 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 - **License**: HIPE-2026 data is released under a [CC BY-NC-SA 4.0 License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg) [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - **Where to find the data**:
   - in the [data](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/) folder
-  - in git [releases](https://github.com/hipe-eval/HIPE-2026-data/releases)
   - later: also on zenodo.
 - **Release history**:
   - 04.12.2026: [data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) + data [json schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
@@ -89,26 +89,7 @@ To validate that your `.jsonl` files conform to the HIPE-2026 schema:
    pip install -r requirements.txt
    ```
 
-2. **Run the validator** using the provided `Makefile`:
-   ```bash
-   make validate
-   ```
-
-This will check all `.jsonl` files in `data/v1.0/` against the schema at `hipe-2026-data.schema.json`.
-
-To clean up the virtual environment and cache files:
-
-```bash
-make clean
-```
-
-To (re)install dependencies:
-
-```bash
-make install
-```
-
-Alternatively, you can run the validator script directly:
+You can run the validator script directly:
 
 ```bash
 python scripts/check_jsonlschema.py \
@@ -116,27 +97,33 @@ python scripts/check_jsonlschema.py \
     data/v1.0/*.jsonl
 ```
 
-### Submission Scorer
+Here, `data/v1.0/` can be replaced with a path to the folder that contains your predictions. 
 
-Score the performance of a single submission file.
 
-```bash
-python scripts/file_scorer_evaluation.py \ 
---gold_data_file GOLD_DATA_FILE_TO_EVALUATE_AGAINST.jsonl \
---predictions_file YOUR_PREDICTION_FILE.jsonl
+## Prediction and Evaluation Example
+
+Let's pretend this gold file has no labels:
+
+```
+data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl
 ```
 
-Score the performance of an entire submission folder.
+We first predict labels with a random baseline and save the output:
 
 ```bash
-python scripts/folder_scorer_evaluation.py \
---gold_data_folder "data/newspapers/v1.0" # is also set as the default.
---team_name TEAM_NAME \
---submission_folder SUBMISSION_FOLDER_NAME
+teamname=RANDOM
+python scripts/dummy_predict.py --input_path data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
+                                --output_path scripts/tmp/$teamname_HIPE-2026-v1.0-impresso-train-de.jsonl \
 ```
 
-Note: For the currently supported sample evaluations, the submission files should follow the naming {team_name}_{gold_file_stem}_run1.jsonl
+Then we can evaluate these predictions against the gold file:
 
+```bash
+teamname=RANDOM
+python scripts/file_scorer_evaluation.py \
+--gold_data_file data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
+--predictions_file scripts/tmp/$teamname_HIPE-2026-v1.0-impresso-train-de.jsonl
+```
 
 ## Acknowledgements
 
