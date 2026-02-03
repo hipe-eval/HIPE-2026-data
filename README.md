@@ -91,11 +91,11 @@ To validate that your `.jsonl` files conform to the HIPE-2026 schema:
 
 2. Run the validator script directly:
 
-```bash
-python scripts/check_jsonlschema.py \
-    --schemafile schemas/hipe-2026-data.schema.json \
-    data/v1.0/*.jsonl
-```
+  ```bash
+  python scripts/check_jsonlschema.py \
+      --schemafile schemas/hipe-2026-data.schema.json \
+        data/v1.0/*.jsonl
+  ```
 
 Here, `data/v1.0/` can be replaced with a path to the folder that contains your predictions. 
 
