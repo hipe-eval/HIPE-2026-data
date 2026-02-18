@@ -8,18 +8,20 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 
 - [Key information](#key-information)  
 - [Data](#hipe-2026-data): Information about data, including link to dataset statistics notebook.  
-- [Evaluation](#prediction-and-evaluation-example) A simple example of prediction and evaluation.
+- [Evaluation](#prediction-and-evaluation-example): A simple example of prediction and evaluation.
 - [Acknowledgements](#acknowledgements)  
 - [References](#references)
 
 ## Key information
 
-- :computer: Visit the [**website**](https://hipe-eval.github.io/HIPE-2026/) for general information on the shared task and registration.
-- :notebook: Read the [**Participation Guidelines**](https://doi.org/10.5281/zenodo.17800136) for detailed information about the tasks, datasets and evaluation. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17800136.svg)](https://doi.org/10.5281/zenodo.17800136)
-- **License**: HIPE-2026 data is released under a [CC BY-NC-SA 4.0 License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg) [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- Visit the [**website**](https://hipe-eval.github.io/HIPE-2026/) for general information on the shared task and registration.
+- Read the [**Participation Guidelines**](https://doi.org/10.5281/zenodo.17800136) for detailed information about the tasks, datasets and evaluation. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17800136.svg)](https://doi.org/10.5281/zenodo.17800136)
+<!-- - **License**: HIPE-2026 data is released under a [CC BY-NC-SA 4.0 License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg) [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) -->
+- **License**: HIPE-2026 data is released under a [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 - **Where to find the data**:
   - in the [data](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/) folder
-  - later: also on zenodo.
+  - later: also on zenodo
 - **Release history**:
   - 04.12.2026: [data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) + data [json schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
   - 19.12.2025: [extended data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) release v1.0 and [sandbox](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/sandbox) release (high quality automatic annotations)
@@ -39,17 +41,17 @@ HIPE-2022 data in IOB format, containing NE mentions and Wikidata QIDs, is conve
 
 The preparation process involved roughly the following steps:
 
-1.  Representation transformation: convert IOB-encoded annotations into structured JSON (intermediate JSON schema).
-2.  Data cleaning & filtering: merge NIL entities and remove overly long documents.
-3.  Extraction of candidate person–location pairs: identify potential pairs within each document and filter.
-4.  Annotation — pre-annotate with an ensemble of LLM, then manually review and correct collaboratively.
-5.  Final dataset creation: assemble dataset splits and package for release (final JSON schema).
+1.  **Representation transformation**: convert IOB-encoded annotations into structured JSON (intermediate JSON schema).
+2.  **Data cleaning & filtering**: merge NIL entities with QID entities if their similarity exceeds 75%, remove statistical outliers and overly long documents.
+3.  **Extraction of candidate person–location pairs**: obtain a maximum of 16 potential pairs within each document via proximity sampling.
+4.  **Annotation**: pre-annotate with an ensemble of LLMs, then manually review and correct collaboratively.
+5.  **Final dataset creation**: assemble dataset splits and package for release (final JSON schema).
 
 **Format and data representation**
 
 - HIPE-2026 data follows this [JSON schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
-- All documents from different primary datasets of HIPE-2022 are gathered in the same language-dependent JSON Line file.
-- Information on the source document and its metadata are in the `media` property.
+- The documents are grouped in JSON Line files per language and split, regardless of their primary dataset of HIPE-2022.
+- Information on the source document and its metadata can be found in the `source` and `media` properties.
 
 **Directory structure and naming convention**
 
@@ -63,14 +65,14 @@ The preparation process involved roughly the following steps:
       ├──  v<x.y> # e.g. "1.0"
            ├── HIPE-2026-v<x.y>-newspapers-train-<language>.jsonl # e.g., <language> = "en"
            ├── ...
-    └── literaryworks # here will appear the surprise test set
+    └── literaryworks # the surprise test set will appear here
         ├──  v<x.y>
            ├── HIPE-2026-v<x.y>-literaryworks-test-<language>.jsonl
   ```
 
 **Versioning**
 
-- HIPE-2026 releases are versioned `Major.Minor`. Version informatio is present in the data directory structure and data filenames.
+- HIPE-2026 releases are versioned `Major.Minor`. Version information is present in the data directory structure and data filenames.
 - Each HIPE-2026 release has an equivalent git repository release, with release notes.
 
 ### Dataset statistics
@@ -94,36 +96,33 @@ To validate that your `.jsonl` files conform to the HIPE-2026 schema:
    ```bash
    python scripts/check_jsonlschema.py \
       --schemafile schemas/hipe-2026-data.schema.json \
-        data/v1.0/*.jsonl
+        data/newspapers/v1.0/*.jsonl
    ```
 
-Here, `data/v1.0/` can be replaced with a path to the folder that contains your predictions. 
+Here, `data/newspapers/v1.0/` can be replaced with a path to the folder that contains your predictions. 
 
 
 ## Prediction and Evaluation Example
 
-Let's pretend this gold file has no labels:
+You might want to exclude some documents from training in order to later test your own models on them. This section explains how you can evaluate your predictions against a gold file using the provided scorers. 
 
-```
-data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl
-```
-
-We first predict labels with a random baseline and save the output:
+As a toy example, let's take the newspaper files and assign labels randomly with the following random baseline script. We will save these example files in the tmp folder.
 
 ```bash
-teamname=RANDOM
-python scripts/dummy_predict.py --input_path data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
-                                --output_path scripts/tmp/$teamname_HIPE-2026-v1.0-impresso-train-de.jsonl \
+python scripts/create_random_baseline.py --input_dir data/newspapers/v1.0/ \
+                                --output_dir scripts/tmp/example_random_baseline 
 ```
+You may also use the create_random_baseline_including_dropout.py script, which drops some person-place pairs and even whole documents in order to simulate a more realistic scenario.
 
-Then we can evaluate these predictions against the gold file:
+We can then evaluate one of our toy example files against the corresponding gold file with the following file scorer:
 
 ```bash
-teamname=RANDOM
 python scripts/file_scorer_evaluation.py \
 --gold_data_file data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
---predictions_file scripts/tmp/$teamname_HIPE-2026-v1.0-impresso-train-de.jsonl
+--predictions_file scripts/tmp/example_random_baseline/HIPE-2026-v1.0-impresso-train-de_random_baseline.jsonl
 ```
+You may also use the folder_scorer_evaluation.py script to evaluate all files in a folder at once.
+
 
 ## Acknowledgements
 

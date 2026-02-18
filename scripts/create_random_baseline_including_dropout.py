@@ -8,11 +8,12 @@ AT_VALUES = ["TRUE", "PROBABLE", "FALSE"]
 ISAT_VALUES = ["TRUE", "FALSE"]
 
 # Directory containing your JSONL files
-INPUT_DIR = "."  # Change if needed
-OUTPUT_SUFFIX = "-randomized.jsonl"
+INPUT_DIR = "../data/newspapers/v1.0/" # Change if needed
+OUTPUT_DIR = "tmp/example_random_baseline_including_dropout"
+OUTPUT_SUFFIX = "_example_random_including_dropout2.jsonl"
 
 # Dropout rate for sample pairs
-PAIR_DROPOUT_RATE = 0.0  # 20% dropout
+PAIR_DROPOUT_RATE = 0.2  # 20% dropout
 
 
 def randomize_predictions(obj):
@@ -47,7 +48,8 @@ def process_files():
     files = glob.glob(os.path.join(INPUT_DIR, "*.jsonl"))
 
     for file_path in files:
-        out_path = file_path.replace(".jsonl", OUTPUT_SUFFIX)
+        out_path = os.path.join(OUTPUT_DIR, os.path.basename(file_path).replace(".jsonl", OUTPUT_SUFFIX))
+
 
         # Read all lines first
         all_objects = []
