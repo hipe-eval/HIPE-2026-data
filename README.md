@@ -104,7 +104,7 @@ Here, `data/newspapers/v1.0/` can be replaced with a path to the folder that con
 
 ## Prediction and Evaluation Example
 
-You might want to exclude some documents from training in order to later test your own models on them. This section explains how you can evaluate your predictions against a gold file using the provided scorers. 
+This section explains how you can evaluate your predictions against a gold file using the provided scorers. 
 
 As a toy example, let's take the newspaper files and assign labels randomly with the following random baseline script. We will save these example files in the tmp folder.
 
@@ -112,17 +112,14 @@ As a toy example, let's take the newspaper files and assign labels randomly with
 python scripts/create_random_baseline.py --input_dir data/newspapers/v1.0/ \
                                 --output_dir scripts/tmp/example_random_baseline 
 ```
-You may also use the create_random_baseline_including_dropout.py script, which drops some person-place pairs and even whole documents in order to simulate a more realistic scenario.
 
-We can then evaluate one of our toy example files against the corresponding gold file with the following file scorer:
+We can then evaluate one of our toy example files with the following file scorer:
 
 ```bash
 python scripts/file_scorer_evaluation.py \
 --gold_data_file data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
 --predictions_file scripts/tmp/example_random_baseline/HIPE-2026-v1.0-impresso-train-de_random_baseline.jsonl
 ```
-You may also use the folder_scorer_evaluation.py script to evaluate all files in a folder at once.
-
 
 ## Acknowledgements
 
