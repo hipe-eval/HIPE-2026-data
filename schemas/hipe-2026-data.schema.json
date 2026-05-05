@@ -37,6 +37,10 @@
           "format": "date"
         },
         {
+          "type": "string",
+          "format": "year"
+        },
+        {
           "type": "null"
         }
       ],
