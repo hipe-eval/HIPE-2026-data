@@ -38,7 +38,7 @@
         },
         {
           "type": "string",
-          "format": "year"
+          "pattern": "^[0-9]{4}$"
         },
         {
           "type": "null"
