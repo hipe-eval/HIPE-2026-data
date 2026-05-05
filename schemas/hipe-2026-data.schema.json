@@ -31,7 +31,7 @@
       "required": ["publication_title", "time_period", "source_type"]
     },
     "date": {
-      "oneOf": [
+      "anyOf": [
         {
           "type": "string",
           "format": "date"
