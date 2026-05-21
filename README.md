@@ -24,8 +24,8 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
   - 04.12.2026: [data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) + data [json schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
   - 19.12.2025: [extended data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) release v1.0 and [sandbox](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/sandbox) release (high quality automatic annotations)
   - 22.01.2026: full training release 
-  - xx.xx.2026: masked test data release
-  - xx.xx.2026: unmasked test data release
+  - 05.05.2026: masked test data release
+  - xx.xx.2026: unmasked test data release (already available in our shared task evaluation [repository](https://github.com/hipe-eval/hipe-2026-eval/tree/main/data/reference).)
 
 ## HIPE-2026 data
 
