@@ -133,7 +133,39 @@ The HIPE-2026 organising team expresses its sincere appreciation to the CLEF-202
 
 ### HIPE-2026
 
-_To be updated_
+**HIPE-2026 Extended overiew (CEUR)**    
+
+Juri Opitz, Corina Raclé, Andrianos Michail, Matteo Romanello, Emanuela Boros, Simon Gabay, Maud Ehrmann, and Simon Clematide. 2026. **Extended Overview of HIPE-2026: Evaluating Accurate and Efficient Person–Place Relation Extraction from Multilingual Historical Texts**. In CLEF 2026 working notes, CEUR workshop proceedings, 2026. CEUR-WS. https://doi.org/10.5281/zenodo.20344461
+
+  
+  ```bibtex
+  @inproceedings{opitz_extended_2026,
+    title = {Extended {{Overview}} of {{HIPE-2026}}: {{Evaluating Accurate}} and {{Efficient Person}}--{{Place Relation Extraction}} from {{Multilingual Historical Texts}}},
+    booktitle = {{{CLEF}} 2026 Working Notes, {{CEUR}} Workshop Proceedings},
+    author = {Opitz, Juri and Racl{\'e}, Corina and Michail, Andrianos and Romanello, Matteo and Boros, Emanuela and Gabay, Simon and Ehrmann, Maud and Clematide, Simon},
+    editor = {S{\'a}nchez Salido, Eva and {Barr{\'o}n-Cede{\~n}o}, Alberto and {Garc{\'i}a Seco de Herrera}, Alba and MacAvaney, Sean and Stru{\ss}, Julia Maria},
+    year = 2026,
+    publisher = {CEUR-WS},
+    doi = {10.5281/zenodo.20344461}
+  }
+  ```
+
+**HIPE-2026 Condensed Overiew (LNCS)**    
+
+Juri Opitz, Corina Raclé, Andrianos Michail, Matteo Romanello, Maud Ehrmann, and Simon Clematide. 2026. **Overview of HIPE-2026: Person–Place Relation Extraction from Multilingual Historical Texts**. In Experimental IR meets multilinguality, multimodality, and interaction. Proceedings of the seventeenth international conference of the CLEF association (CLEF 2026) (Lecture notes in computer science (LNCS)), 2026. Springer.
+
+
+  ```bibtex
+  @inproceedings{opitz_overview_2026,
+    title = {Overview of {{HIPE-2026}}: {{Person}}--{{Place Relation Extraction}} from {{Multilingual Historical Texts}}},
+    booktitle = {Experimental {{IR}} Meets Multilinguality, Multimodality, and Interaction. {{Proceedings}} of the Seventeenth International Conference of the {{CLEF}} Association ({{CLEF}} 2026)},
+    author = {Opitz, Juri and Racl{\'e}, Corina and Michail, Andrianos and Romanello, Matteo and Ehrmann, Maud and Clematide, Simon},
+    editor = {Hagen, Matthias and Potthast, Martin and Stein, Benno and Schaer, Philipp and Zangerle, Eva and MacAvaney, Sean and Stru{\ss}, Julia Maria and S{\'a}nchez Salido, Eva and {Barr{\'o}n-Cede{\~n}o}, Alberto and {Garc{\'i}a Seco de Herrera}, Alba},
+    year = 2026,
+    series = {Lecture Notes in Computer Science ({{LNCS}})},
+    publisher = {Springer}
+  }
+  ```
 
 ### Previous shared tasks
 
@@ -142,9 +174,6 @@ _To be updated_
 - **HIPE-2022 Extended Overview Paper:**
 
   M. Ehrmann, M. Romanello, S. Najem-Meyer, A. Doucet, and S. Clematide (2022). [Extended Overview of HIPE-2022: Named Entity Recognition and Linking in Multilingual Historical Documents](http://ceur-ws.org/Vol-3180/paper-83.pdf). In Proceedings of the Working Notes of CLEF 2022 - Conference and Labs of the Evaluation Forum, edited by Guglielmo Faggioli, Nicola Ferro, Allan Hanbury, and Martin Potthast, Vol. 3180. CEUR-WS, 2022. https://doi.org/10.5281/zenodo.6979577.
-
-    <details>
-    <summary>bibtex</summary>
     
     ```bibtex
     @inproceedings{ehrmann_extended_2022,
@@ -159,19 +188,13 @@ _To be updated_
       url = {http://ceur-ws.org/Vol-3180/paper-83.pdf}
     }
     ```
-    
-    <pre>
-    </pre>
-    </details>
+
 
 - **HIPE-2020 Participant Papers** are in [Working Notes of CLEF 2020 - Conference and Labs of the Evaluation Forum](http://ceur-ws.org/Vol-2696/), edited by Linda Cappellato, Carsten Eickhoff, Nicola Ferro, Aurélie Névéol.
 
 - **HIPE-2020 Extended Overview Paper**:
 
   M. Ehrmann, M. Romanello, A. Flückiger, and S. Clematide, [Extended Overview of CLEF HIPE 2020: Named Entity Processing on Historical Newspapers](https://infoscience.epfl.ch/record/281054) in Working Notes of CLEF 2020 - Conference and Labs of the Evaluation Forum, Thessaloniki, Greece, 2020, vol. 2696, p. 38. doi: 10.5281/zenodo.4117566.
-
-  <details>
-  <summary>bibtex</summary>
     
   ```bibtex
   @inproceedings{ehrmann_extended_2020,
@@ -189,7 +212,3 @@ _To be updated_
     keywords = {cited}
   }
   ```
-
-  <pre>
-  </pre>
-  </details>
