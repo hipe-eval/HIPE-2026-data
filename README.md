@@ -1,6 +1,6 @@
 # HIPE-2026-data
 
-[HIPE 2026 shared task](https://hipe-eval.github.io/HIPE-2026/) is a [CLEF 2026 Evaluation Lab](https://clef2022.clef-initiative.eu/) on the **extraction and qualification of person–place relations in multilingual historical documents**, and the third edition of the [HIPE-eval](https://hipe-eval.github.io/) shared task series.
+[HIPE 2026 shared task](https://hipe-eval.github.io/HIPE-2026/) is a [CLEF 2026 Evaluation Lab](https://clef2026.clef-initiative.eu/) on the **extraction and qualification of person–place relations in multilingual historical documents**, and the third edition of the [HIPE-eval](https://hipe-eval.github.io/) shared task series.
 
 Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020) and [HIPE-2022](https://impresso.github.io/CLEF-HIPE-2022), which focused on entity recognition and linking, HIPE-2026 aims to support answering the question **_Who was where, when?_** and to deepen our understanding of how people and places were connected in historical media. This will enable the reconstruction of life trajectories, the tracing of mobility patterns, and the identification of actors within local contexts.
 
@@ -8,7 +8,7 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 
 - [Key information](#key-information)  
 - [Data](#hipe-2026-data): Information about data, including link to dataset statistics notebook.  
-- [Evaluation](#prediction-and-evaluation-example) A simple example of prediction and evaluation.
+- [Evaluation](#prediction-and-evaluation-example): A simple example of prediction and evaluation.
 - [Acknowledgements](#acknowledgements)  
 - [References](#references)
 
@@ -18,8 +18,10 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 - :notebook: Read the [**Participation Guidelines**](https://doi.org/10.5281/zenodo.17800136) for detailed information about the tasks, datasets and evaluation. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17800136.svg)](https://doi.org/10.5281/zenodo.17800136)
 - **License**: HIPE-2026 data is released under a [CC BY-NC-SA 4.0 License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg) [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - **Where to find the data**:
-  - in the [data](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/) folder
-  - later: also on zenodo.
+  - in the [data](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/) folder of this repository
+  - on Zenodo [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20615690-blue)](https://doi.org/10.5281/zenodo.20615690)
+  - in the [GH release v1.0](https://github.com/hipe-eval/HIPE-2026-data/releases/tag/v1.0)
+  
 - **Release history**:
   - 12.06.2026: unmasked test data release (already available in our shared task evaluation [repository](https://github.com/hipe-eval/hipe-2026-eval/tree/main/data/reference)) and final data [release v1.0](https://github.com/hipe-eval/HIPE-2026-data/releases/tag/v1.0)
   - 05.05.2026: masked test data release
@@ -31,32 +33,33 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 
 HIPE-2026 uses two evaluation domains. **Domain A** contains historical newspaper articles in German, English, and French, spanning the nineteenth and twentieth centuries, derived from the HIPE-2022 newspaper data, with manually created entity annotations and Wikidata links. **Domain B** is a surprise test set consisting of French literature and historiographical works from the sixteenth to eighteenth centuries, included to assess out-of-domain generalisation.
 
-**Contents and preparation**
+### Contents and preparation
 
-HIPE-2026 builds on the [HIPE-2022 v2.1](https://github.com/hipe-eval/HIPE-2022-data/tree/main/data/v2.1) NE-annotated historical newspaper datasets.
+**Domain A** builds on the [HIPE-2022 v2.1](https://github.com/hipe-eval/HIPE-2022-data/tree/main/data/v2.1) NE-annotated historical newspaper datasets. Primary datasets included are those that contain PERS and LOC annotations, namely: `impresso-hipe-2020`, `newseye`, `sonar`, and `letemps`. HIPE-2022 data in IOB format, containing NE mentions and Wikidata QIDs, is converted into JSON, preserving the document text and metadata, and enabling the extraction of person–place pairs.
 
-Primary datasets included in the HIPE-2026 data are those that include PERS and LOC annotations, namely:`impresso-hipe-2020`, `newseye`, `sonar`, and `letemps`.
+**Domain B** entity annotations and Wikidata links come from the FreEM_NER corpus (version 6), which includes an extended and improved version of the *Presto* core corpus. The `at` relationships were annotated on top of these for this shared task. Note that Test A evaluates both `at` and `isAt` relation types; Test B evaluates only `at`.
 
-HIPE-2022 data in IOB format, containing NE mentions and Wikidata QIDs, is converted into JSON, preserving the document text and metadata, and enabling the extraction of person–place pairs.
+The preparation process for both domains involved roughly the following steps:
 
-The preparation process involved roughly the following steps:
-
-1.  Representation transformation: convert IOB-encoded annotations into structured JSON (intermediate JSON schema).
+1.  Representation transformation: convert source annotations into structured JSON.
 2.  Data cleaning & filtering: merge NIL entities and remove overly long documents.
 3.  Extraction of candidate person–location pairs: identify potential pairs within each document and filter.
-4.  Annotation — pre-annotate with an ensemble of LLM, then manually review and correct collaboratively.
-5.  Final dataset creation: assemble dataset splits and package for release (final JSON schema).
+4.  Annotation — pre-annotate with an ensemble of LLMs, then manually review and correct collaboratively.
+5.  Final dataset creation: assemble dataset splits and package for release.
 
-**Format and data representation**
+### Format and data representation
 
 - HIPE-2026 data follows this [JSON schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
 - All documents from different primary datasets of HIPE-2022 are gathered in the same language-dependent JSON Line file.
 - Information on the source document and its metadata are in the `media` property.
 
-**Directory structure and naming convention**
+### Directory structure and naming convention
 
 - Training and testing datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
 - Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|test>-<lg>.jsonl`.
+- **Domain A** data is in `data/newspapers/`; **Domain B** data is in `data/litworks/`.
+- Files ending in `_masked` are the test files as distributed during the evaluation period, with gold labels removed.
+- The `sandbox/` directory contains silver (automatically annotated) data for Domain A, intended for additional pretraining or self-supervised experiments.
 - Data directory is organised per HIPE release version and dataset:
 
   ```
@@ -86,9 +89,9 @@ The preparation process involved roughly the following steps:
       └── README.md
   ```
 
-**Versioning**
+### Versioning
 
-- HIPE-2026 releases are versioned `Major.Minor`. Version informatio is present in the data directory structure and data filenames.
+- HIPE-2026 releases are versioned `Major.Minor`. Version information is present in the data directory structure and data filenames.
 - Each HIPE-2026 release has an equivalent git repository release, with release notes.
 
 ### Dataset statistics
@@ -143,10 +146,10 @@ To validate that your `.jsonl` files conform to the HIPE-2026 schema:
    ```bash
    python scripts/check_jsonlschema.py \
       --schemafile schemas/hipe-2026-data.schema.json \
-        data/v1.0/*.jsonl
+      data/newspapers/v1.0/*.jsonl data/litworks/v1.0/*.jsonl
    ```
 
-Here, `data/v1.0/` can be replaced with a path to the folder that contains your predictions. 
+Here, the file paths can be replaced with a path to the folder that contains your own predictions.
 
 
 ## Prediction and Evaluation Example
@@ -161,8 +164,9 @@ We first predict labels with a random baseline and save the output:
 
 ```bash
 teamname=RANDOM
-python scripts/dummy_predict.py --input_path data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
-                                --output_path scripts/tmp/$teamname_HIPE-2026-v1.0-impresso-train-de.jsonl \
+python scripts/dummy_predict.py \
+  --input_path data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
+  --output_path scripts/tmp/${teamname}_HIPE-2026-v1.0-impresso-train-de.jsonl
 ```
 
 Then we can evaluate these predictions against the gold file:
@@ -170,11 +174,9 @@ Then we can evaluate these predictions against the gold file:
 ```bash
 teamname=RANDOM
 python scripts/file_scorer_evaluation.py \
---gold_data_file data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
---predictions_file scripts/tmp/$teamname_HIPE-2026-v1.0-impresso-train-de.jsonl
+  --gold_data_file data/newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl \
+  --predictions_file scripts/tmp/${teamname}_HIPE-2026-v1.0-impresso-train-de.jsonl
 ```
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
 ## Acknowledgements
 
@@ -186,8 +188,7 @@ The HIPE-2026 organising team expresses its sincere appreciation to the CLEF-202
 
 **HIPE-2026 Extended overview (CEUR)**    
 
-Juri Opitz, Maud Ehrmann, Corina Raclé, Andrianos Michail, Matteo Romanello, Emanuela 
-Boros, Simon Gabay, Maud Ehrmann, and Simon Clematide. 2026. **Extended Overview of HIPE-2026: Evaluating Accurate and Efficient Person–Place Relation Extraction from Multilingual Historical Texts**. In CLEF 2026 working notes, CEUR workshop proceedings, 2026. CEUR-WS. https://doi.org/10.5281/zenodo.20344461
+Juri Opitz, Maud Ehrmann, Corina Raclé, Andrianos Michail, Matteo Romanello, Emanuela Boros, Simon Gabay, and Simon Clematide. 2026. **Extended Overview of HIPE-2026: Evaluating Accurate and Efficient Person–Place Relation Extraction from Multilingual Historical Texts**. In CLEF 2026 working notes, CEUR workshop proceedings, 2026. CEUR-WS. https://doi.org/10.5281/zenodo.20344461
 
   
   ```bibtex
