@@ -1,6 +1,6 @@
 # HIPE-2026-data
 
-[HIPE 2026 shared task](https://hipe-eval.github.io/HIPE-2026/) is a [CLEF 2026 Evaluation Lab](https://clef2022.clef-initiative.eu/) on the **extraction and qualification of of person–place relations in multilingual historical documents.**.
+[HIPE 2026 shared task](https://hipe-eval.github.io/HIPE-2026/) is a [CLEF 2026 Evaluation Lab](https://clef2022.clef-initiative.eu/) on the **extraction and qualification of person–place relations in multilingual historical documents**, and the third edition of the [HIPE-eval](https://hipe-eval.github.io/) shared task series.
 
 Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020) and [HIPE-2022](https://impresso.github.io/CLEF-HIPE-2022), which focused on entity recognition and linking, HIPE-2026 aims to support answering the question **_Who was where, when?_** and to deepen our understanding of how people and places were connected in historical media. This will enable the reconstruction of life trajectories, the tracing of mobility patterns, and the identification of actors within local contexts.
 
@@ -21,13 +21,15 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
   - in the [data](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/) folder
   - later: also on zenodo.
 - **Release history**:
-  - 04.12.2026: [data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) + data [json schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json).
-  - 19.12.2025: [extended data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) release v1.0 and [sandbox](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/sandbox) release (high quality automatic annotations)
-  - 22.01.2026: full training release 
+  - 12.06.2026: unmasked test data release (already available in our shared task evaluation [repository](https://github.com/hipe-eval/hipe-2026-eval/tree/main/data/reference)) and final data [release v1.0](https://github.com/hipe-eval/HIPE-2026-data/releases/tag/v1.0)
   - 05.05.2026: masked test data release
-  - xx.xx.2026: unmasked test data release (already available in our shared task evaluation [repository](https://github.com/hipe-eval/hipe-2026-eval/tree/main/data/reference).)
+  - 22.01.2026: full training release
+  - 19.12.2025: [extended data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) release v1.0 and [sandbox](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/sandbox) release (high quality automatic annotations)
+  - 04.12.2025: [data sample](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/newspapers/v1.0) + data [json schema](https://github.com/hipe-eval/HIPE-2026-data/blob/main/schemas/hipe-2026-data.schema.json)
 
 ## HIPE-2026 data
+
+HIPE-2026 uses two evaluation domains. **Domain A** contains historical newspaper articles in German, English, and French, spanning the nineteenth and twentieth centuries, derived from the HIPE-2022 newspaper data, with manually created entity annotations and Wikidata links. **Domain B** is a surprise test set consisting of French literature and historiographical works from the sixteenth to eighteenth centuries, included to assess out-of-domain generalisation.
 
 **Contents and preparation**
 
@@ -54,18 +56,34 @@ The preparation process involved roughly the following steps:
 **Directory structure and naming convention**
 
 - Training and testing datasets consist of UTF-8 JSON Line files. There is one `.jsonl` file per language and split.
-- Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|test>-<lg1>.jsonl`.
-- Data directory is organised per HIPE release version and language:
+- Files are named according to this schema: `HIPE-2026-vx.x-<dataset>-<train|test>-<lg>.jsonl`.
+- Data directory is organised per HIPE release version and dataset:
 
   ```
   data
-  └── newspapers
-      ├──  v<x.y> # e.g. "1.0"
-           ├── HIPE-2026-v<x.y>-newspapers-train-<language>.jsonl # e.g., <language> = "en"
-           ├── ...
-    └── literaryworks # here will appear the surprise test set
-        ├──  v<x.y>
-           ├── HIPE-2026-v<x.y>-literaryworks-test-<language>.jsonl
+  ├── newspapers
+  │   └── v1.0
+  │       ├── HIPE-2026-v1.0-impresso-test_masked-de.jsonl
+  │       ├── HIPE-2026-v1.0-impresso-test_masked-en.jsonl
+  │       ├── HIPE-2026-v1.0-impresso-test_masked-fr.jsonl
+  │       ├── HIPE-2026-v1.0-impresso-test-de.jsonl
+  │       ├── HIPE-2026-v1.0-impresso-test-en.jsonl
+  │       ├── HIPE-2026-v1.0-impresso-test-fr.jsonl
+  │       ├── HIPE-2026-v1.0-impresso-train-de.jsonl
+  │       ├── HIPE-2026-v1.0-impresso-train-en.jsonl
+  │       └── HIPE-2026-v1.0-impresso-train-fr.jsonl
+  ├── litworks
+  │   └── v1.0
+  │       ├── HIPE-2026-v1.0-surprise-test_masked-fr.jsonl
+  │       └── HIPE-2026-v1.0-surprise-test-fr.jsonl
+  └── sandbox
+      ├── de-dev.jsonl
+      ├── de-train.jsonl
+      ├── en-dev.jsonl
+      ├── en-train.jsonl
+      ├── fr-dev.jsonl
+      ├── fr-train.jsonl
+      └── README.md
   ```
 
 **Versioning**
@@ -76,6 +94,37 @@ The preparation process involved roughly the following steps:
 ### Dataset statistics
 
 In [this notebook](https://colab.research.google.com/drive/1Av87krWYI1QbQ-_q_UfrVBbKMtcInpJb#scrollTo=sNoDJI242duL) we load the training data and generate some dataset statistics.
+
+**File overview**
+
+The table below lists all data files with their split, annotation type, language, and document count (one document = one JSON line).
+
+| Dataset | Split | Annotation | Lang | File | #docs |
+|---------|-------|------------|------|------|------:|
+| newspapers | train | gold | de | `newspapers/v1.0/HIPE-2026-v1.0-impresso-train-de.jsonl` | 34 |
+| newspapers | train | gold | en | `newspapers/v1.0/HIPE-2026-v1.0-impresso-train-en.jsonl` | 35 |
+| newspapers | train | gold | fr | `newspapers/v1.0/HIPE-2026-v1.0-impresso-train-fr.jsonl` | 35 |
+| newspapers | test | gold | de | `newspapers/v1.0/HIPE-2026-v1.0-impresso-test-de.jsonl` | 19 |
+| newspapers | test | gold | en | `newspapers/v1.0/HIPE-2026-v1.0-impresso-test-en.jsonl` | 19 |
+| newspapers | test | gold | fr | `newspapers/v1.0/HIPE-2026-v1.0-impresso-test-fr.jsonl` | 19 |
+| litworks | test | gold | fr | `litworks/v1.0/HIPE-2026-v1.0-surprise-test-fr.jsonl` | 30 |
+| newspapers | dev | silver | de | `sandbox/de-dev.jsonl` | 32 |
+| newspapers | dev | silver | en | `sandbox/en-dev.jsonl` | 17 |
+| newspapers | dev | silver | fr | `sandbox/fr-dev.jsonl` | 107 |
+| newspapers | train | silver | de | `sandbox/de-train.jsonl` | 88 |
+| newspapers | train | silver | en | `sandbox/en-train.jsonl` | 56 |
+| newspapers | train | silver | fr | `sandbox/fr-train.jsonl` | 317 |
+
+**Note on silver vs. gold annotation overlap:** The silver train files
+(`sandbox/*-train.jsonl`) contain automatic (LLM) annotations for all original silver documents, *minus* those released in the sample submissions. A subset of these documents was also manually annotated and appears in the gold train files (`newspapers/v1.0/HIPE-2026-v1.0-impresso-train-*.jsonl`). These overlapping documents are thus present in **both** the silver and gold train files, but carry different annotations (automatic vs. human). The document counts in the silver train files in this repository therefore include documents that were also manually annotated for gold train. Specifically:
+
+| Lang | Silver train in repo | of which also in Gold train |
+|------|---------------------:|----------------------------:|
+| de | 88 | 24 |
+| en | 56 | 33 |
+| fr | 317 | 24 |
+
+Participants who trained on both gold and silver data should be aware of this overlap.
 
 ### Data validation
 
@@ -125,6 +174,8 @@ python scripts/file_scorer_evaluation.py \
 --predictions_file scripts/tmp/$teamname_HIPE-2026-v1.0-impresso-train-de.jsonl
 ```
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+
 ## Acknowledgements
 
 The HIPE-2026 organising team expresses its sincere appreciation to the CLEF-2026 Lab Organising Committee for the overall coordination and support. HIPE-eval editions are organised within the framework of the [Impresso - Media Monitoring of the Past](https://impresso-project.ch/)￼ project, funded by the Swiss National Science Foundation under grant No. CRSII5_213585 and by the Luxembourg National Research Fund under grant No. 17498891.
@@ -133,16 +184,18 @@ The HIPE-2026 organising team expresses its sincere appreciation to the CLEF-202
 
 ### HIPE-2026
 
-**HIPE-2026 Extended overiew (CEUR)**    
+**HIPE-2026 Extended overview (CEUR)**    
 
-Juri Opitz, Corina Raclé, Andrianos Michail, Matteo Romanello, Emanuela Boros, Simon Gabay, Maud Ehrmann, and Simon Clematide. 2026. **Extended Overview of HIPE-2026: Evaluating Accurate and Efficient Person–Place Relation Extraction from Multilingual Historical Texts**. In CLEF 2026 working notes, CEUR workshop proceedings, 2026. CEUR-WS. https://doi.org/10.5281/zenodo.20344461
+Juri Opitz, Maud Ehrmann, Corina Raclé, Andrianos Michail, Matteo Romanello, Emanuela 
+Boros, Simon Gabay, Maud Ehrmann, and Simon Clematide. 2026. **Extended Overview of HIPE-2026: Evaluating Accurate and Efficient Person–Place Relation Extraction from Multilingual Historical Texts**. In CLEF 2026 working notes, CEUR workshop proceedings, 2026. CEUR-WS. https://doi.org/10.5281/zenodo.20344461
 
   
   ```bibtex
   @inproceedings{opitz_extended_2026,
     title = {Extended {{Overview}} of {{HIPE-2026}}: {{Evaluating Accurate}} and {{Efficient Person}}--{{Place Relation Extraction}} from {{Multilingual Historical Texts}}},
     booktitle = {{{CLEF}} 2026 Working Notes, {{CEUR}} Workshop Proceedings},
-    author = {Opitz, Juri and Racl{\'e}, Corina and Michail, Andrianos and Romanello, Matteo and Boros, Emanuela and Gabay, Simon and Ehrmann, Maud and Clematide, Simon},
+    author = {Opitz, Juri and Ehrmann,  Maud and Racl{\'e}, Corina and Michail, 
+    Andrianos and Romanello, Matteo and Boros, Emanuela and Gabay, Simon and Clematide, Simon},
     editor = {S{\'a}nchez Salido, Eva and {Barr{\'o}n-Cede{\~n}o}, Alberto and {Garc{\'i}a Seco de Herrera}, Alba and MacAvaney, Sean and Stru{\ss}, Julia Maria},
     year = 2026,
     publisher = {CEUR-WS},
@@ -150,16 +203,19 @@ Juri Opitz, Corina Raclé, Andrianos Michail, Matteo Romanello, Emanuela Boros, 
   }
   ```
 
-**HIPE-2026 Condensed Overiew (LNCS)**    
+**HIPE-2026 Condensed Overview (LNCS)**    
 
-Juri Opitz, Corina Raclé, Andrianos Michail, Matteo Romanello, Maud Ehrmann, and Simon Clematide. 2026. **Overview of HIPE-2026: Person–Place Relation Extraction from Multilingual Historical Texts**. In Experimental IR meets multilinguality, multimodality, and interaction. Proceedings of the seventeenth international conference of the CLEF association (CLEF 2026) (Lecture notes in computer science (LNCS)), 2026. Springer.
+Juri Opitz, Maud Ehrmann, Corina Raclé, Andrianos Michail, Matteo Romanello and 
+Simon Clematide. 2026. **Overview of HIPE-2026: Person–Place Relation Extraction from Multilingual Historical Texts**. In Experimental IR meets multilinguality, multimodality, and interaction. Proceedings of the seventeenth international conference of the CLEF association (CLEF 2026) (Lecture notes in computer science (LNCS)), 2026. Springer.
 
+Preprint available on arXiv: [https://arxiv.org/abs/2606.25935](https://arxiv.org/abs/2606.25935)
 
   ```bibtex
   @inproceedings{opitz_overview_2026,
     title = {Overview of {{HIPE-2026}}: {{Person}}--{{Place Relation Extraction}} from {{Multilingual Historical Texts}}},
     booktitle = {Experimental {{IR}} Meets Multilinguality, Multimodality, and Interaction. {{Proceedings}} of the Seventeenth International Conference of the {{CLEF}} Association ({{CLEF}} 2026)},
-    author = {Opitz, Juri and Racl{\'e}, Corina and Michail, Andrianos and Romanello, Matteo and Ehrmann, Maud and Clematide, Simon},
+    author = {Opitz, Juri and Ehrmann, Maud and Racl{\'e}, Corina and Michail, 
+    Andrianos and Romanello, Matteo  and Clematide, Simon},
     editor = {Hagen, Matthias and Potthast, Martin and Stein, Benno and Schaer, Philipp and Zangerle, Eva and MacAvaney, Sean and Stru{\ss}, Julia Maria and S{\'a}nchez Salido, Eva and {Barr{\'o}n-Cede{\~n}o}, Alberto and {Garc{\'i}a Seco de Herrera}, Alba},
     year = 2026,
     series = {Lecture Notes in Computer Science ({{LNCS}})},
@@ -198,7 +254,6 @@ Juri Opitz, Corina Raclé, Andrianos Michail, Matteo Romanello, Maud Ehrmann, an
     
   ```bibtex
   @inproceedings{ehrmann_extended_2020,
-    ids = {ehrmann2020extended,ehrmann_extended_2020a},
     title = {Extended {{Overview}} of {{CLEF HIPE}} 2020: {{Named Entity Processing}} on {{Historical Newspapers}}},
     booktitle = {Working {{Notes}} of {{CLEF}} 2020 - {{Conference}} and {{Labs}} of the {{Evaluation Forum}}},
     author = {Ehrmann, Maud and Romanello, Matteo and Fl{\"u}ckiger, Alex and Clematide, Simon},
