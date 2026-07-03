@@ -19,7 +19,7 @@ Building on the success of [HIPE-2020](https://impresso.github.io/CLEF-HIPE-2020
 - **License**: HIPE-2026 data is released under a [CC BY-NC-SA 4.0 License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg) [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - **Where to find the data**:
   - in the [data](https://github.com/hipe-eval/HIPE-2026-data/tree/main/data/) folder of this repository
-  - on Zenodo [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20615690-blue)](https://doi.org/10.5281/zenodo.20615690)
+  - on Zenodo [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21165041-blue)](https://doi.org/10.5281/zenodo.21165041)
   - in the [GH release v1.0](https://github.com/hipe-eval/HIPE-2026-data/releases/tag/v1.0)
   
 - **Release history**:
